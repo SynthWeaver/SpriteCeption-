@@ -33,8 +33,12 @@ function draw($array){
     return $string . "</table>";
 }
 
+// 1 x 1
+
 $stone = "<div class='tile stone'></div>";
 $grass = "<div class='tile grass'></div>";
+
+// 6 x 6
 
 $roadV = draw(
     array(
@@ -55,6 +59,17 @@ $roadH = draw(
         array($stone, $stone, $stone, $stone, $stone, $stone),
         array($grass, $grass, $grass, $grass, $grass, $grass),
         array($grass, $grass, $grass, $grass, $grass, $grass),
+    )
+);
+
+$crossroad = draw(
+    array(
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($stone, $stone, $stone, $stone, $stone, $stone),
+        array($stone, $stone, $stone, $stone, $stone, $stone),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
     )
 );
 
@@ -79,6 +94,8 @@ $roadCorner1 = draw(
         array($grass, $grass, $stone, $stone, $grass, $grass),
     )
 );
+
+// 12 x 12
 
 $highwayLB = draw(
     array(
@@ -106,4 +123,20 @@ $highway69 = draw(
     )
 );
 
-$spawn = $highway69;
+// 18 x 18
+
+$crossroadBig = draw(
+    array(
+        array($grassField, $roadV, $grassField),
+        array($roadH, $crossroad, $roadH),
+        array($grassField, $roadV, $grassField),
+    )
+);
+
+
+
+
+
+
+
+$spawn = $crossroadBig;
