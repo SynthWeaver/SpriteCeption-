@@ -6,7 +6,6 @@
     .tile{
         width: 32px;
         height: 32px;
-        display: inline-block;
     }
 
     .stone{
@@ -20,89 +19,91 @@
 
 <?php
 
-function loop($tile, $amound){
-    $html = "";
-    
-    for ($i=0; $i < $amound ; $i++) { 
-        $html = $html . $tile;
+function draw($array){
+    $string = "<table>";
+
+    foreach($array as $row){
+        $string .= "<tr>";
+        foreach($row as $value){
+            $string .= "<td>$value</td>";
+        }
+        $string .= "</tr>";
     }
 
-    return $html;
+    return $string . "</table>";
 }
 
 $stone = "<div class='tile stone'></div>";
-
-
 $grass = "<div class='tile grass'></div>";
 
-$roadV = "
-    <span>
-        <div>$grass $grass $stone $stone $grass $grass</div>
-        <div>$grass $grass $stone $stone $grass $grass</div>
-        <div>$grass $grass $stone $stone $grass $grass</div>
-        <div>$grass $grass $stone $stone $grass $grass</div>
-        <div>$grass $grass $stone $stone $grass $grass</div>
-        <div>$grass $grass $stone $stone $grass $grass</div>
-    </span>
-";
+$roadV = draw(
+    array(
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+    )
+);
 
-$roadH = "
-    <span>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$stone $stone $stone $stone $stone $stone</div>
-        <div>$stone $stone $stone $stone $stone $stone</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-    </span>
-";
+$roadH = draw(
+    array(
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($stone, $stone, $stone, $stone, $stone, $stone),
+        array($stone, $stone, $stone, $stone, $stone, $stone),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+    )
+);
 
-$grassField = "
-    <span>    
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-    </span>
-";
+$grassField = draw(
+    array(
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+    )
+);
 
-$roadCorner1 =  "
-    <span>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$grass $grass $grass $grass $grass $grass</div>
-        <div>$stone $stone $stone $stone $grass $grass</div>
-        <div>$stone $stone $stone $stone $grass $grass</div>
-        <div>$grass $grass $stone $stone $grass $grass</div>
-        <div>$grass $grass $stone $stone $grass $grass</div>
-    </span>
-";
+$roadCorner1 = draw(
+    array(
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($grass, $grass, $grass, $grass, $grass, $grass),
+        array($stone, $stone, $stone, $stone, $grass, $grass),
+        array($stone, $stone, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+        array($grass, $grass, $stone, $stone, $grass, $grass),
+    )
+);
 
-$highwayLB = "
-    <span>    
-        <div>$roadH $roadCorner1</div>
-        <div>$grassField $roadV</div>
-    </span>
-";
+$highwayLB = draw(
+    array(
+        array($roadH, $roadCorner1),
+        array($grassField, $roadV),
+    )
+);
 
 $highwayLT = "
-    <span style='transform: rotate(90deg)'>$highwayLB</span>
+    <div style='transform: rotate(90deg)'>$highwayLB</div>
 ";
 
 $highwayRT = "
-    <span style='transform: rotate(180deg)'>$highwayLB</span>
+    <div style='transform: rotate(180deg)'>$highwayLB</div>
 ";
 
 $highwayRB = "
-    <span style='transform: rotate(270deg)'>$highwayLB</span>
+    <div style='transform: rotate(270deg)'>$highwayLB</div>
 ";
 
-$highway69 = "
-    <span>    
-        <div>$highwayRB $highwayLB</div>
-        <div>$highwayRT $highwayLT</div>
-    </span>
-";
+$highway69 = draw(
+    array(
+        array($highwayRB, $highwayLB),
+        array($highwayRT, $highwayLT),
+    )
+);
 
 $spawn = $highway69;
