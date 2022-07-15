@@ -1,6 +1,42 @@
-main{
-    width: 800px;
-    height: 600px;
-    background-color: red;
+html, body {
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden
 }
 
+body{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+main{
+    width: 600px;
+    height: 600px;
+    border: 1000rem solid black;
+    position: relative;
+}
+
+main>*{
+    position: absolute;
+    z-index: -1;
+}
+
+#map_layer{
+    top: -1500px;
+    left: -1500px;
+}
+
+#player_container{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+#player{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}

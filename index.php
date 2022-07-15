@@ -19,8 +19,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Screen -->
     <main>
-        <?php echo($spawn);?>
+        <!-- Map layer -->
+        <div id="map_layer">
+            <!-- Floor layer -->
+            <img src="img/chunk0.png">
+
+            <!-- Block layer -->
+
+        </div>
+        
+        <!-- Player layer -->
+        <div id="player_container">
+            <div id="player"></div>
+        </div>        
     </main>
 </body>
 </html>
